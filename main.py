@@ -18,6 +18,14 @@ def delete_after(filepath, seconds=600):
             os.remove(filepath)
     Timer(seconds, delete).start()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 def home():
     return {"message": "Service is running"}
