@@ -4,8 +4,6 @@ from rembg import remove
 from PIL import Image
 import uuid, os
 from threading import Timer
-import os
-import uvicorn
 
 app = FastAPI()
 
@@ -45,6 +43,3 @@ async def download(filename: str):
         return FileResponse(path, media_type="image/png", filename=filename)
     return {"error": "File not found"}
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
