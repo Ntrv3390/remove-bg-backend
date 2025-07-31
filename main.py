@@ -18,6 +18,11 @@ def delete_after(filepath, seconds=600):
             os.remove(filepath)
     Timer(seconds, delete).start()
 
+@app.get("/")
+def home():
+    return {"message": "Service is running"}
+
+
 @app.post("/remove-bg/")
 async def remove_bg(file: UploadFile = File(...)):
     file_id = str(uuid.uuid4()) + ".png"
